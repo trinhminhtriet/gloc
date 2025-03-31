@@ -10,7 +10,7 @@ on:
     types: [opened, synchronize]
 
 env:
-  DOCKER_BASE_NAME: ghcr.io/${{ github.repository }}/gloc
+  DOCKER_BASE_NAME: ghcr.io/${{ github.repository }}
   DOCKER_HUB_BASE_NAME: trinhminhtriet/gloc
 
 jobs:
