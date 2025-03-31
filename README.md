@@ -58,7 +58,8 @@ TOTAL                            4             37              1            341
 with [dockerhub](https://hub.docker.com/repository/docker/trinhminhtriet/gloc)
 
 ```
-$ docker run --rm -v "${PWD}":/workdir trinhminhtriet/gloc .
+docker pull trinhminhtriet/gloc
+docker run --rm -v "${PWD}":/workdir trinhminhtriet/gloc .
 ```
 
 ### Integration Jenkins CI
@@ -191,7 +192,7 @@ tokei --sort code --exclude "**/*.txt" .  0.76s user 0.50s system 562% cpu 0.224
 ### gloc
 
 ```
-$ time gloc --exclude-ext=txt .
+time gloc --exclude-ext=txt .
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
