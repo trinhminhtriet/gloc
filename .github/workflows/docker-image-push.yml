@@ -10,7 +10,7 @@ on:
     types: [opened, synchronize]
 
 env:
-  DOCKER_BASE_NAME: docker.pkg.github.com/${{ github.repository }}/gloc
+  DOCKER_BASE_NAME: ghcr.io/${{ github.repository }}
   DOCKER_HUB_BASE_NAME: trinhminhtriet/gloc
 
 jobs:
@@ -50,7 +50,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DCKR_PAT: ${{ secrets.DCKR_PAT }}
         run: |
-          echo "${GITHUB_TOKEN}" | docker login docker.pkg.github.com -u trinhminhtriet --password-stdin
+          echo "${GITHUB_TOKEN}" | docker login ghcr.io -u trinhminhtriet --password-stdin
           echo "${DCKR_PAT}" | docker login -u trinhminhtriet --password-stdin
       - name: Push to GitHub Packages
         if: github.event_name != 'pull_request'
