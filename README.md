@@ -35,7 +35,9 @@ Download from [latest releases ](https://github.com/trinhminhtriet/gloc/releases
 
 ```sh
 make build
+rm -rf /usr/local/bin/gloc
 ln -s $(pwd)/bin/gloc /usr/local/bin/gloc
+gloc --version
 gloc .
 ```
 

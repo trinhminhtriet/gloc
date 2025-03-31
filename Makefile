@@ -6,7 +6,6 @@ COMMIT := $(shell git rev-parse --short HEAD)
 build:
 	mkdir -p bin
 	GO111MODULE=on go build -ldflags="-s -w -X main.Version=${VERSION} -X main.GitCommit=${COMMIT}" -o ./bin/gloc cmd/gloc/main.go
-  ln -s $(pwd)/bin/gloc /usr/local/bin/gloc
 
 update-package:
 	GO111MODULE=on go get -u github.com/trinhminhtriet/gloc
