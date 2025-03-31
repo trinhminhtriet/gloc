@@ -1,12 +1,10 @@
 package gloc
 
-// Processor is gloc analyzing processor.
 type Processor struct {
 	langs *DefinedLanguages
 	opts  *ClocOptions
 }
 
-// Result defined processing result.
 type Result struct {
 	Total         *Language
 	Files         map[string]*ClocFile
@@ -14,7 +12,6 @@ type Result struct {
 	MaxPathLength int
 }
 
-// NewProcessor returns Processor.
 func NewProcessor(langs *DefinedLanguages, options *ClocOptions) *Processor {
 	return &Processor{
 		langs: langs,
@@ -22,7 +19,6 @@ func NewProcessor(langs *DefinedLanguages, options *ClocOptions) *Processor {
 	}
 }
 
-// Analyze executes gloc parsing for the directory of the paths argument and returns the result.
 func (p *Processor) Analyze(paths []string) (*Result, error) {
 	total := NewLanguage("TOTAL", []string{}, [][]string{{"", ""}})
 	languages, err := getAllFiles(paths, p.langs, p.opts)

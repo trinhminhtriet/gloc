@@ -23,7 +23,6 @@ func TestOutputJSON(t *testing.T) {
 		t.Errorf("invalid result. lang: Go")
 	}
 
-	// check output json text
 	buf, err := json.Marshal(jsonResult)
 	if err != nil {
 		fmt.Println(err)

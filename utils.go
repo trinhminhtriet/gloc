@@ -88,11 +88,9 @@ func isVCSDir(path string) bool {
 
 func checkDefaultIgnore(path string, info os.FileInfo, isVCS bool) bool {
 	if info.IsDir() {
-		// directory is ignored
 		return true
 	}
 	if !isVCS && isVCSDir(path) {
-		// vcs file or directory is ignored
 		return true
 	}
 
@@ -100,7 +98,6 @@ func checkDefaultIgnore(path string, info os.FileInfo, isVCS bool) bool {
 }
 
 func checkOptionMatch(path string, info os.FileInfo, opts *ClocOptions) bool {
-	// check match directory & file options
 	targetFile := info.Name()
 	if opts.Fullpath {
 		targetFile = path
@@ -125,7 +122,6 @@ func checkOptionMatch(path string, info os.FileInfo, opts *ClocOptions) bool {
 	return true
 }
 
-// getAllFiles return all the files to be analyzed in paths.
 func getAllFiles(paths []string, languages *DefinedLanguages, opts *ClocOptions) (result map[string]*Language, err error) {
 	result = make(map[string]*Language, 0)
 	fileCache := make(map[string]struct{})
@@ -141,14 +137,12 @@ func getAllFiles(paths []string, languages *DefinedLanguages, opts *ClocOptions)
 				return nil
 			}
 
-			// check match & not-match directory
 			if match := checkOptionMatch(path, info, opts); !match {
 				return nil
 			}
 
 			if ext, ok := getFileType(path, opts); ok {
 				if targetExt, ok := Exts[ext]; ok {
-					// check exclude extension
 					if _, ok := opts.ExcludeExts[targetExt]; ok {
 						return nil
 					}

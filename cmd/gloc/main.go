@@ -11,25 +11,18 @@ import (
 	"github.com/trinhminhtriet/gloc"
 )
 
-// Version is version string for gloc command
 var Version string
 
-// GitCommit is git commit hash string for gloc command
 var GitCommit string
 
-// OutputTypeDefault is cloc's text output format for --output-type option
 const OutputTypeDefault string = "default"
 
-// OutputTypeClocXML is Cloc's XML output format for --output-type option
 const OutputTypeClocXML string = "cloc-xml"
 
-// OutputTypeSloccount is Sloccount output format for --output-type option
 const OutputTypeSloccount string = "sloccount"
 
-// OutputTypeJSON is JSON output format for --output-type option
 const OutputTypeJSON string = "json"
 
-// OutputTypeMarkdown is Markdown output format for --output-type option
 const OutputTypeMarkdown string = "markdown"
 
 const (
@@ -43,8 +36,6 @@ const (
 
 var rowLen = 79
 
-// CmdOptions is gloc command options.
-// It is necessary to use notation that follows go-flags.
 type CmdOptions struct {
 	ByFile         bool   `long:"by-file" description:"report results for every encountered source file"`
 	SortTag        string `long:"sort" default:"code" description:"sort based on a certain column" choice:"name" choice:"files" choice:"blank" choice:"comment" choice:"code"`
@@ -101,10 +92,8 @@ func (o *outputBuilder) WriteHeader() {
 				fmt.Print("|")
 			} else {
 				if i == 1 {
-					// Align the first column to the left
 					fmt.Print(":")
 				} else {
-					// Align the other columns to the right
 					if headerString[i+1] == '|' && i > headerLen {
 						fmt.Print(":")
 					} else {
@@ -217,7 +206,6 @@ func writeResultWithByFile(opts *CmdOptions, result *gloc.Result) {
 }
 
 func (o *outputBuilder) WriteResult() {
-	// write header
 	o.WriteHeader()
 
 	clocLangs := o.result.Languages
@@ -270,14 +258,13 @@ func (o *outputBuilder) WriteResult() {
 		}
 	}
 
-	// write footer
 	o.WriteFooter()
 }
 
 func main() {
 	var opts CmdOptions
 	clocOpts := gloc.NewClocOptions()
-	// parse command line options
+
 	parser := flags.NewParser(&opts, flags.Default)
 	parser.Name = "gloc"
 	parser.Usage = "[OPTIONS] PATH[...]"
@@ -287,7 +274,6 @@ func main() {
 		return
 	}
 
-	// value for language result
 	languages := gloc.NewDefinedLanguages()
 
 	if opts.ShowVersion {
@@ -305,13 +291,11 @@ func main() {
 		return
 	}
 
-	// check sort tag option with other options
 	if opts.ByFile && opts.SortTag == "files" {
 		fmt.Println("`--sort files` option cannot be used in conjunction with the `--by-file` option")
 		os.Exit(1)
 	}
 
-	// setup option for exclude extensions
 	for _, ext := range strings.Split(opts.ExcludeExt, ",") {
 		e, ok := gloc.Exts[ext]
 		if ok {
@@ -321,7 +305,6 @@ func main() {
 		}
 	}
 
-	// directory and file matching options
 	if opts.Match != "" {
 		clocOpts.ReMatch = regexp.MustCompile(opts.Match)
 	}
@@ -335,7 +318,6 @@ func main() {
 		clocOpts.ReNotMatchDir = regexp.MustCompile(opts.NotMatchDir)
 	}
 
-	// setup option for include languages
 	for _, lang := range strings.Split(opts.IncludeLang, ",") {
 		if _, ok := languages.Langs[lang]; ok {
 			clocOpts.IncludeLangs[lang] = struct{}{}

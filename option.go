@@ -2,7 +2,6 @@ package gloc
 
 import "regexp"
 
-// ClocOptions is gloc processor options.
 type ClocOptions struct {
 	Debug          bool
 	SkipDuplicated bool
@@ -14,15 +13,11 @@ type ClocOptions struct {
 	ReMatchDir     *regexp.Regexp
 	Fullpath       bool
 
-	// OnCode is triggered for each line of code.
-	OnCode func(line string)
-	// OnBlack is triggered for each blank line.
-	OnBlank func(line string)
-	// OnComment is triggered for each line of comments.
+	OnCode    func(line string)
+	OnBlank   func(line string)
 	OnComment func(line string)
 }
 
-// NewClocOptions create new ClocOptions with default values.
 func NewClocOptions() *ClocOptions {
 	return &ClocOptions{
 		Debug:          false,
