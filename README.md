@@ -57,7 +57,7 @@ TOTAL                            4             37              1            341
 
 with [dockerhub](https://hub.docker.com/repository/docker/trinhminhtriet/gloc)
 
-```
+```sh
 docker pull trinhminhtriet/gloc
 docker run --rm -v "${PWD}":/workdir trinhminhtriet/gloc .
 ```
