@@ -47,10 +47,10 @@ jobs:
       - name: Login to Registries
         if: github.event_name != 'pull_request'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERSONAL_GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
           DCKR_PAT: ${{ secrets.DCKR_PAT }}
         run: |
-          echo "${GITHUB_TOKEN}" | docker login ghcr.io -u trinhminhtriet --password-stdin
+          echo "${PERSONAL_GITHUB_TOKEN}" | docker login ghcr.io -u trinhminhtriet --password-stdin
           echo "${DCKR_PAT}" | docker login -u trinhminhtriet --password-stdin
       - name: Push to GitHub Packages
         if: github.event_name != 'pull_request'
