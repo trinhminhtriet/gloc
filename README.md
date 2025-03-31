@@ -33,8 +33,10 @@ Download from [latest releases ](https://github.com/trinhminhtriet/gloc/releases
 
 ### Basic Usage
 
-```
-$ gloc .
+```sh
+make build
+ln -s $(pwd)/bin/gloc /usr/local/bin/gloc
+gloc .
 ```
 
 ```
