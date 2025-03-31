@@ -1,13 +1,8 @@
 name: Push Docker Image
 
 on:
-  push:
-    branches:
-      - master
   release:
     types: [published]
-  pull_request:
-    types: [opened, synchronize]
 
 env:
   DOCKER_BASE_NAME: ghcr.io/${{ github.repository }}
