@@ -1,0 +1,12 @@
+.DS_Store
+bin/
+*.sw?
+GTAGS
+GPATH
+GRTAGS
+
+Gopkg.lock
+vendor/
+bin/gloc
+dist/
+coverage.out
