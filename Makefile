@@ -1,8 +1,11 @@
+VERSION := $(shell git describe --tags)
+COMMIT := $(shell git rev-parse --short HEAD)
+
 .PHONY: test build
 
 build:
 	mkdir -p bin
-	GO111MODULE=on go build -o ./bin/gloc cmd/gloc/main.go
+	GO111MODULE=on go build -ldflags="-s -w -X main.Version=${VERSION} -X main.GitCommit=${COMMIT}" -o ./bin/gloc cmd/gloc/main.go
 
 update-package:
 	GO111MODULE=on go get -u github.com/trinhminhtriet/gloc
