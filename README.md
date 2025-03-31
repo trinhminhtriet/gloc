@@ -92,7 +92,7 @@ $ gloc --show-lang
 - CPU 3.8GHz 8core Intel Core i7 / 32GB 2667MHz DDR4 / MacOSX 13.3.1
 - cloc 1.96
 - tokei 12.1.2 compiled with serialization support: json
-- gloc [a88edc5](https://github.com/trinhminhtriet/gloc/commit/a88edc52b3eea697687f9546f6ac74a03c91c5fb)
+- gloc v0.1.1 [1dfa360](https://github.com/trinhminhtriet/gloc/commit/1dfa360c412270a7d9e12346eec7052c0d904ff4)
 - target repository is [golang/go commit:f742ddc](https://github.com/golang/go/tree/f742ddc349723667fc9af5d0f16233f7762aeaa0)
 
 ### cloc
