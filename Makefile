@@ -7,6 +7,9 @@ build:
 	mkdir -p bin
 	GO111MODULE=on go build -ldflags="-s -w -X main.Version=${VERSION} -X main.GitCommit=${COMMIT}" -o ./bin/gloc cmd/gloc/main.go
 
+docker-build:
+	docker build --build-arg VERSION=${VERSION} --build-arg COMMIT=${COMMIT} -t trinhminhtriet/gloc:latest .
+
 update-package:
 	GO111MODULE=on go get -u github.com/trinhminhtriet/gloc
 
