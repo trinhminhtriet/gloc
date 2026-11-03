@@ -3,7 +3,7 @@ module github.com/trinhminhtriet/gloc
 go 1.24
 
 require (
-	github.com/go-enry/go-enry/v2 v2.9.4
+	github.com/go-enry/go-enry/v2 v2.9.6
 	github.com/jessevdk/go-flags v1.4.0
 	github.com/spf13/afero v1.15.0
 )
